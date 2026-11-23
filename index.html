@@ -236,7 +236,7 @@ main { padding-bottom: 24px; }
 .stats .container { display: grid; grid-template-columns: repeat(4, 1fr); }
 .stat { padding: 34px 20px; text-align: center; }
 .stat + .stat { border-left: 1px solid var(--line); }
-  .stat-num .plus { margin-right: -6px; }
+.stat-num .stat-plus { margin-right: -4px; }
 .stat-num { font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1; display: inline-flex; align-items: center; gap: 10px; }
 .stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 10px; }
 .stars { display: inline-flex; gap: 2px; color: var(--electric); }
@@ -310,7 +310,7 @@ main { padding-bottom: 24px; }
 .eco-block { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 88px; }
 .eco-block.reverse .eco-text { order: 2; }
 @media (max-width: 900px) { .eco-block { grid-template-columns: 1fr; gap: 36px; margin-top: 64px; } .eco-block.reverse .eco-text { order: 0; } }
-.eco-num { font-size: 4.5rem; font-weight: 800; color: rgba(255, 255, 255, 0.1); line-height: 1; letter-spacing: -0.04em; }
+.eco-num { font-size: 4.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: transparent; -webkit-text-stroke: 2px var(--electric); paint-order: stroke fill; }
 .eco-kicker { color: var(--electric); font-weight: 700; margin-top: 6px; }
 .eco-text h3 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-top: 4px; }
 .checks { list-style: none; padding: 0; margin: 22px 0 0; }
@@ -728,7 +728,7 @@ button.day { cursor: pointer; transition: transform .15s; }
 
   <section class="stats" aria-label="A academia em números">
     <div class="container">
-      <div class="stat"><div class="stat-num"><span class="plus">+</span><span data-count="30">30</span></div><div class="stat-label">alunos atendidos</div></div>
+      <div class="stat"><div class="stat-num"><span class="stat-plus">+</span><span data-count="30">30</span></div><div class="stat-label">alunos atendidos</div></div>
       <div class="stat"><div class="stat-num"><span data-count="5" data-decimals="1">5,0</span><span class="stars" data-stars></span></div><div class="stat-label">nota no Google</div></div>
       <div class="stat"><div class="stat-num"><span data-count="3">3</span></div><div class="stat-label">vídeos novos por semana</div></div>
       <div class="stat"><div class="stat-num"><span data-count="4">4</span></div><div class="stat-label">edições do Caxambu Chess Open em 2027</div></div>
