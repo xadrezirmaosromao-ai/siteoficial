@@ -46,6 +46,7 @@
     inaugural: "Olá! Tenho uma dúvida sobre o Caxambu Chess Open de 5 de dezembro.",
     plano: (nome, periodo) => "Olá! Vim pelo site e quero garantir minha vaga no plano " + nome + " (" + periodo + ") para as turmas de fevereiro.",
     inscricao: "Olá! Vim pelo site e quero me inscrever nas aulas de xadrez que começam em fevereiro de 2027.",
+    patrocinio: "Olá! Vim pelo site e tenho interesse em patrocinar o Caxambu Chess Open. Gostaria de conhecer as oportunidades de patrocínio.",
   };
   const linkWA = (m) => "https://wa.me/" + WA_NUM + (m ? "?text=" + encodeURIComponent(m) : "");
   const LINKS = {
@@ -160,7 +161,7 @@
   (function hero() {
     if (!$("#hero-title")) return;
     const h1 = $("#hero-title");
-    h1.setAttribute("aria-label", "Academia de Xadrez Irmãos Romão");
+    h1.setAttribute("aria-label", $$(".line", h1).map((l) => l.textContent.trim()).join(" "));
     let wi = 0;
     $$(".line", h1).forEach((line, li) => {
       const words = line.textContent.trim().split(/\s+/);
@@ -980,11 +981,16 @@
       if (ticking) return; ticking = true;
       requestAnimationFrame(() => {
         const y = window.scrollY;
-        if (Math.abs(y - lastY) > 6) { fab.classList.toggle("away", y > lastY && y > 200); lastY = y; }
+        const hero = $(".hero, .a-hero"), inHero = hero && y < hero.offsetHeight * 0.75;
+        if (Math.abs(y - lastY) > 6 || inHero) { fab.classList.toggle("away", inHero || (y > lastY && y > 200)); lastY = y; }
         ticking = false;
       });
     }, { passive: true });
+    if ($(".hero, .a-hero")) fab.classList.add("away");
   })();
+
+  /* ───────── Etiquetas da linha do tempo ───────── */
+  $$(".tl-tag[data-until]").forEach((t) => { if (hojeLocal() > t.dataset.until) { t.textContent = t.dataset.after; t.classList.add("done"); } });
 
   /* ───────── Faixa de aviso no topo ───────── */
   (function topbar() {
